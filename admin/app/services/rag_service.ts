@@ -4,6 +4,7 @@ import { inject } from '@adonisjs/core'
 import logger from '@adonisjs/core/services/logger'
 import { TokenChunker } from '@chonkiejs/core'
 import sharp from 'sharp'
+import env from '@adonisjs/core/services/env'
 import {
   deleteFileIfExists,
   determineFileType,
@@ -1939,10 +1940,11 @@ export class RagService {
        * resolve() normalises path traversal sequences (e.g. "/../..") before the
        * check to prevent path traversal vulns
        * The trailing sep is to ensure a prefix like "kb_uploads_{something_incorrect}" can't slip through.
+       * Fork: NOMAD_DATA files are user-owned, so they are only ever removed from the index, never from disk.
        */
       const uploadsAbsPath = join(process.cwd(), RagService.UPLOADS_STORAGE_PATH)
       const resolvedSource = resolve(source)
-      if (resolvedSource.startsWith(uploadsAbsPath + sep)) {
+      if (resolvedSource.startsWith(resolve(uploadsAbsPath) + sep)) {
         await deleteFileIfExists(resolvedSource)
         logger.info(`[RAG] Deleted uploaded file from disk: ${resolvedSource}`)
       } else {
@@ -2198,6 +2200,35 @@ export class RagService {
           logger.debug(`[RAG] ${label} directory does not exist, skipping`)
         } else {
           throw error
+        }
+      }
+    }
+
+    // Fork: also scan NOMAD_DATA_PATH (the user's own tree — 01_MEDIZIN,
+    // 04_SURVIVAL, 10_EIGENE_PDFS_RAG, …). Unlike the directories above this
+    // is user-supplied, so a bad path warns and is skipped instead of aborting
+    // the whole discovery pass.
+    //
+    // Deliberately NOT added to scannedRoots: the orphan sweep in
+    // scanAndSyncStorage() only purges under roots listed there, and an
+    // unmounted or renamed NOMAD_DATA tree must never cost the index its
+    // curated documents. Stale entries are removed by hand instead.
+    const nomadDataPath = env.get('NOMAD_DATA_PATH')
+    if (nomadDataPath) {
+      const nomadDataAbs = nomadDataPath.startsWith(sep)
+        ? resolve(nomadDataPath)
+        : join(process.cwd(), nomadDataPath)
+      try {
+        const contents = await listDirectoryContentsRecursive(nomadDataAbs)
+        contents.forEach((entry) => {
+          if (entry.type === 'file') filesInStorage.push(entry.key)
+        })
+        logger.debug(`[RAG] Found ${contents.length} files in NOMAD_DATA_PATH`)
+      } catch (error) {
+        if (error.code === 'ENOENT') {
+          logger.debug(`[RAG] NOMAD_DATA_PATH ${nomadDataAbs} does not exist, skipping`)
+        } else {
+          logger.warn(`[RAG] Error scanning NOMAD_DATA_PATH:`, error)
         }
       }
     }
