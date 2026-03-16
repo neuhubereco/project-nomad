@@ -4,7 +4,7 @@ import { inject } from '@adonisjs/core'
 import logger from '@adonisjs/core/services/logger'
 import { TokenChunker } from '@chonkiejs/core'
 import sharp from 'sharp'
-import env from '@adonisjs/core/services/env'
+import env from '#start/env'
 import {
   deleteFileIfExists,
   determineFileType,
