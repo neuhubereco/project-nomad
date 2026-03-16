@@ -4,6 +4,7 @@ import { inject } from '@adonisjs/core'
 import logger from '@adonisjs/core/services/logger'
 import { TokenChunker } from '@chonkiejs/core'
 import sharp from 'sharp'
+import env from '@adonisjs/core/services/env'
 import { deleteFileIfExists, determineFileType, getFile, getFileStatsIfExists, listDirectoryContentsRecursive, ZIM_STORAGE_PATH } from '../utils/fs.js'
 import { PDFParse } from 'pdf-parse'
 import { createWorker } from 'tesseract.js'
@@ -1508,17 +1509,16 @@ export class RagService {
       logger.info(`[RAG] Deleted all points for source: ${source}`)
 
       /** Delete the physical file only if it lives inside the uploads directory.
-      * resolve() normalises path traversal sequences (e.g. "/../..") before the
-      * check to prevent path traversal vulns
-      * The trailing sep is to ensure a prefix like "kb_uploads_{something_incorrect}" can't slip through.
+      * For NOMAD_DATA files we only remove from the index; we do not delete the file on disk (user-owned data).
+      * resolve() normalises path traversal sequences (e.g. "/../..") before the check to prevent path traversal vulns.
       */
       const uploadsAbsPath = join(process.cwd(), RagService.UPLOADS_STORAGE_PATH)
       const resolvedSource = resolve(source)
-      if (resolvedSource.startsWith(uploadsAbsPath + sep)) {
+      if (resolvedSource.startsWith(resolve(uploadsAbsPath) + sep)) {
         await deleteFileIfExists(resolvedSource)
         logger.info(`[RAG] Deleted uploaded file from disk: ${resolvedSource}`)
       } else {
-        logger.warn(`[RAG] File was removed from knowledge base but doesn't live in Nomad's uploads directory, so it can't be safely removed. Skipping deletion of physical file...`)
+        logger.debug(`[RAG] Removed from index only (file not in uploads dir): ${resolvedSource}`)
       }
 
       // Drop the ingest state row last so the file disappears entirely. Without
@@ -1708,6 +1708,30 @@ export class RagService {
           logger.debug(`[RAG] ${label} directory does not exist, skipping`)
         } else {
           throw error
+        }
+      }
+    }
+
+    // Fork: also scan NOMAD_DATA_PATH (the user's own tree — 01_MEDIZIN,
+    // 04_SURVIVAL, 10_EIGENE_PDFS_RAG, …). Unlike the directories above this
+    // is user-supplied, so a bad path warns and is skipped instead of aborting
+    // the whole discovery pass.
+    const nomadDataPath = env.get('NOMAD_DATA_PATH')
+    if (nomadDataPath) {
+      const nomadDataAbs = nomadDataPath.startsWith(sep)
+        ? resolve(nomadDataPath)
+        : join(process.cwd(), nomadDataPath)
+      try {
+        const contents = await listDirectoryContentsRecursive(nomadDataAbs)
+        contents.forEach((entry) => {
+          if (entry.type === 'file') filesInStorage.push(entry.key)
+        })
+        logger.debug(`[RAG] Found ${contents.length} files in NOMAD_DATA_PATH`)
+      } catch (error) {
+        if (error.code === 'ENOENT') {
+          logger.debug(`[RAG] NOMAD_DATA_PATH ${nomadDataAbs} does not exist, skipping`)
+        } else {
+          logger.warn(`[RAG] Error scanning NOMAD_DATA_PATH:`, error)
         }
       }
     }
