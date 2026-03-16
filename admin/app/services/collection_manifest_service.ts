@@ -28,12 +28,23 @@ import type {
   SpecTier,
 } from '../../types/collections.js'
 
-const SPEC_URLS: Record<ManifestType, string> = {
-  zim_categories: 'https://raw.githubusercontent.com/Crosstalk-Solutions/project-nomad/refs/heads/main/collections/kiwix-categories.json',
-  maps: 'https://github.com/Crosstalk-Solutions/project-nomad/raw/refs/heads/main/collections/maps.json',
-  wikipedia: 'https://raw.githubusercontent.com/Crosstalk-Solutions/project-nomad/refs/heads/main/collections/wikipedia.json',
-  creator_packs: 'https://raw.githubusercontent.com/Crosstalk-Solutions/project-nomad/refs/heads/main/collections/creator-packs.json',
+const DEFAULT_COLLECTIONS_BASE = 'https://raw.githubusercontent.com/Crosstalk-Solutions/project-nomad/refs/heads/main'
+
+function getSpecUrls(): Record<ManifestType, string> {
+  const base = process.env.NOMAD_COLLECTIONS_BASE_URL || DEFAULT_COLLECTIONS_BASE
+  const baseNorm = base.replace(/\/$/, '')
+  return {
+    zim_categories: `${baseNorm}/collections/kiwix-categories.json`,
+    maps: `${baseNorm}/collections/maps.json`,
+    wikipedia: `${baseNorm}/collections/wikipedia.json`,
+    // Creator Packs are gated content served by Crosstalk's entitlement Worker.
+    // They stay pinned to upstream on purpose: a forked copy of this manifest
+    // would go stale and hand out pack ids the Worker no longer honours.
+    creator_packs: `${DEFAULT_COLLECTIONS_BASE}/collections/creator-packs.json`,
+  }
 }
+
+const SPEC_URLS = getSpecUrls()
 
 const VALIDATORS: Record<ManifestType, any> = {
   zim_categories: zimCategoriesSpecSchema,
