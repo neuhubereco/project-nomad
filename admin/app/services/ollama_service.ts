@@ -1082,6 +1082,22 @@ export class OllamaService {
   }
 
   /**
+   * Timeout for a single /api/embed call, in milliseconds.
+   *
+   * The 60s default is fine on hardware where a batch finishes in a few
+   * seconds. On a CPU-only host it can sit just above the line — measured on a
+   * 4-core Ryzen V1500B, one batch of 8 chunks at 4000 chars takes ~73s. Every
+   * batch then times out and falls back to /v1/embeddings while the abandoned
+   * /api/embed request keeps burning CPU server-side, so two concurrent embed
+   * jobs turn into four in-flight workloads and the whole queue gridlocks.
+   * NOMAD_EMBED_TIMEOUT_MS lets such a host raise the ceiling instead.
+   */
+  public static embedTimeoutMs(): number {
+    const raw = Number(process.env.NOMAD_EMBED_TIMEOUT_MS)
+    return Number.isFinite(raw) && raw > 0 ? raw : 60000
+  }
+
+  /**
    * Single embed attempt: native /api/embed when the backend speaks it, otherwise (or on
    * failure) the OpenAI-compat /v1/embeddings fallback. Both paths request num_ctx/truncate
    * (Ollama's OpenAI-compat shim forwards them). A context-length error from the native path
@@ -1115,7 +1131,7 @@ export class OllamaService {
             truncate: true,
             options: { num_ctx: 8192 },
           },
-          { timeout: 60000 }
+          { timeout: OllamaService.embedTimeoutMs() }
         )
         // Some backends (e.g. LM Studio) return HTTP 200 for unknown endpoints with an incompatible
         // body — validate explicitly before accepting the result. Kept even though the probe now
