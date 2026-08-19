@@ -55,13 +55,27 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   line="${line%%#*}"
   line="$(printf '%s' "$line" | tr -d '\r' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//')"
   [[ -z "$line" ]] && continue
-  subdir="${line%%[[:space:]]*}"
-  url="$(printf '%s' "${line#*[[:space:]]}" | sed 's/^[[:space:]]*//')"
+  # Format: SUBDIR<TAB>URL[<TAB>DATEINAME]
+  # Die dritte Spalte ist optional und ueberschreibt den aus der URL
+  # abgeleiteten Namen - noetig bei Quellen wie IRIS, deren URL auf
+  # "/content" endet und sonst eine Datei namens "content" ergibt.
+  # Alte Zeilen trennen teils mit Leerzeichen statt Tab -> erst normalisieren.
+  case "$line" in
+    *"$(printf '\t')"*) : ;;
+    *) line="$(printf '%s' "$line" | sed 's/[[:space:]][[:space:]]*/\t/')" ;;
+  esac
+  subdir="$(printf '%s' "$line" | cut -f1)"
+  url="$(printf '%s' "$line" | cut -f2)"
+  want_name="$(printf '%s' "$line" | cut -f3)"
   [[ -z "$url" || "$url" == "$subdir" ]] && continue
 
   dir="$TARGET/$subdir"
-  raw_name="$(basename "${url%%\?*}")"
-  filename="$(printf '%s' "$raw_name" | sed 's/%20/_/g; s/%2B/+/g')"
+  if [[ -n "$want_name" && "$want_name" != "$url" ]]; then
+    filename="$want_name"
+  else
+    raw_name="$(basename "${url%%\?*}")"
+    filename="$(printf '%s' "$raw_name" | sed 's/%20/_/g; s/%2B/+/g')"
+  fi
   if [[ -z "$filename" ]]; then
     hash="$( { printf '%s' "$url" | sha256sum 2>/dev/null || printf '%s' "$url" | shasum -a 256 2>/dev/null; } | cut -c1-12)"
     filename="doc_${hash}.pdf"
@@ -69,6 +83,10 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   dest="$dir/$filename"
 
   if (( VERIFY_ONLY )); then
+    case "$dest" in
+      *.pdf|*.PDF|*.zip|*.ZIP|*.txt|*.md|*.epub|*.docx) : ;;
+      *) [[ -e "${dest}.pdf" ]] && dest="${dest}.pdf" ;;
+    esac
     if [[ ! -e "$dest" ]]; then
       echo "MISSING  $subdir/$filename"; FAILURES+=("MISSING $subdir/$filename"); ((failed++))
     elif looks_valid "$dest"; then
@@ -81,6 +99,10 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   fi
 
   # Already present and sane -> leave it alone.
+  case "$dest" in
+    *.pdf|*.PDF|*.zip|*.ZIP|*.txt|*.md|*.epub|*.docx) : ;;
+    *) [[ -e "${dest}.pdf" ]] && dest="${dest}.pdf" ;;
+  esac
   if [[ -e "$dest" ]] && looks_valid "$dest"; then
     ((skipped++)); continue
   fi
@@ -99,6 +121,15 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     echo "NOT-A-PDF  $subdir/$filename  <- $url  ($(head -c 200 "$tmp" | tr -d '\0' | head -1 | cut -c1-60))"
     FAILURES+=("NOT-A-PDF $subdir/$filename"); rm -f "$tmp"; ((failed++)); continue
   fi
+
+  # Manche Quellen liefern das PDF unter einer URL ohne Dateiendung
+  # (z. B. IRIS: .../bitstreams/<uuid>/content). Ohne ".pdf" haelt NOMAD die
+  # Datei fuer einen unbekannten Typ und laesst sie beim Einbetten liegen —
+  # sie waere heruntergeladen, aber unsichtbar fuer die Wissensdatenbank.
+  case "$dest" in
+    *.pdf|*.PDF|*.zip|*.ZIP|*.txt|*.md|*.epub|*.docx) : ;;
+    *) if head -c 5 "$tmp" | grep -q '%PDF-'; then dest="${dest}.pdf"; fi ;;
+  esac
 
   mv -f "$tmp" "$dest"
   chmod 0644 "$dest"
