@@ -4,6 +4,10 @@
 # Run: install/download-nomad-data-pdfs.sh
 # ---
 
+# HINWEIS 2026-08-19: ready.gov beantwortet Direktabrufe aus AT/EU teilweise mit
+# HTTP 403 (aus den USA gehen dieselben URLs mit 200 durch). Wenn das Skript hier
+# 403 meldet, ist die URL nicht tot — die Datei muss dann anderswo geholt und
+# manuell nach NOMAD-DATA gelegt werden.
 # === 01_MEDIZIN / Notfall / WHO/IFRC ===
 04_SURVIVAL	https://www.ifrc.org/sites/default/files/2022-02/EN_GFARC_GUIDELINES_2020.pdf
 04_SURVIVAL	https://hlh.who.int/docs/librariesprovider4/hlh-documents/who-icrc-basic-emergency-care.pdf
