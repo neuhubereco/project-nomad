@@ -90,4 +90,14 @@ export default await Env.create(new URL('../', import.meta.url), {
    * Then the app fetches .../collections/kiwix-categories.json etc. So new ZIM categories go live after push.
    */
   NOMAD_COLLECTIONS_BASE_URL: Env.schema.string.optional(),
+
+  /**
+   * CPU-only tuning. Defaults match upstream (batch 8, 60s timeout) and are
+   * only worth touching when the logs show a repeating
+   * "/api/embed failed, falling back to /v1/embeddings: timeout" — that means
+   * one batch does not finish inside the timeout, and every batch is then paid
+   * for twice.
+   */
+  NOMAD_EMBEDDING_BATCH_SIZE: Env.schema.number.optional(),
+  NOMAD_EMBED_TIMEOUT_MS: Env.schema.number.optional(),
 })

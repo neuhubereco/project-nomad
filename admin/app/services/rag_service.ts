@@ -67,7 +67,14 @@ export class RagService {
   // Nomic Embed Text v1.5 uses task-specific prefixes for optimal performance
   public static SEARCH_DOCUMENT_PREFIX = 'search_document: '
   public static SEARCH_QUERY_PREFIX = 'search_query: '
-  public static EMBEDDING_BATCH_SIZE = 8 // Conservative batch size for low-end hardware
+  // Conservative batch size for low-end hardware. Overridable because the cost
+  // of one batch scales with it, and on a CPU-only host the batch has to finish
+  // inside OllamaService.embedTimeoutMs() or every batch falls back and the
+  // queue gridlocks. Halving this is the cheapest way under that ceiling.
+  public static EMBEDDING_BATCH_SIZE = (() => {
+    const raw = Number(process.env.NOMAD_EMBEDDING_BATCH_SIZE)
+    return Number.isInteger(raw) && raw > 0 ? raw : 8
+  })()
 
   constructor(
     private dockerService: DockerService,
