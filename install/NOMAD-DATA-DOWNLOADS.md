@@ -84,6 +84,16 @@ Nach dem Speichern ggf. nach `10_EIGENE_PDFS_RAG` kopieren und **Scan and Sync**
 
 ## 5. Österreich-Karte (PMTiles Extract, optional)
 
+> **Warum es dafür keinen Katalog-Eintrag gibt:** `collections/maps.json` wird beim
+> Laden gegen `mapsSpecSchema` validiert, und dort ist `url` ein Pflichtfeld
+> (`vine.string().url()`). Ein Platzhalter-Eintrag mit `url: null` lässt **die
+> gesamte Maps-Datei** durchfallen — nicht nur den einen Eintrag —, und die App
+> arbeitet still mit der letzten gültigen Fassung weiter. Genau das ist zwischen
+> März und August 2026 passiert: die Einträge `europe` und `oberoesterreich` sind
+> nie in der App angekommen und haben nebenbei alle DE/AT-Karten blockiert.
+> Regionale Extrakte gibt es nicht als feste Download-URL, deshalb bleibt der Weg
+> unten (selbst extrahieren + manuell hinzufügen) der richtige.
+
 Für eine Offline-Karte nur Österreich: [pmtiles CLI](https://github.com/protomaps/go-pmtiles/releases) installieren, dann (wenn eine gültige Build-URL von [maps.protomaps.com/builds](https://maps.protomaps.com/builds) verfügbar ist):
 
 ```bash
