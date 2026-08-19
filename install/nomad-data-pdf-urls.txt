@@ -7,7 +7,9 @@
 # === 01_MEDIZIN / Notfall / WHO/IFRC ===
 04_SURVIVAL	https://www.ifrc.org/sites/default/files/2022-02/EN_GFARC_GUIDELINES_2020.pdf
 04_SURVIVAL	https://hlh.who.int/docs/librariesprovider4/hlh-documents/who-icrc-basic-emergency-care.pdf
-01_MEDIZIN	https://www.who.int/publications/i/item/WHO-MHP-HPS-EML-2023.02
+# geprueft 2026-08-19: WHO EML 24. Liste (2025) direkt aus IRIS; die alte item-URL liefert HTML
+# alt: https://www.who.int/publications/i/item/WHO-MHP-HPS-EML-2023.02
+01_MEDIZIN	https://iris.who.int/server/api/core/bitstreams/17642505-ecd3-4940-a691-4f1dfa0d835a/content
 01_MEDIZIN	https://publikationen.dguv.de/widgets/pdf/download/article/826
 
 # === BBK (DE) Notfallvorsorge ===
@@ -17,47 +19,71 @@
 04_SURVIVAL	https://www.zivilschutz.at/wp-content/uploads/2022/09/Blackout-Ratgeber_Web.pdf
 04_SURVIVAL	https://www.zivilschutz.at/wp-content/uploads/2022/09/Blackout_Folder_Web.pdf
 04_SURVIVAL	https://www.zivilschutz.at/wp-content/uploads/2022/06/Infoblatt-Sirenensignale.pdf
-04_SURVIVAL	https://www.zivilschutz.at/wp-content/uploads/2022/06/Infoblatt-Notrufnummern.pdf
+# geprueft 2026-08-19: zivilschutz.at liefert 401; OOE-Checkliste geprueft
+# alt: https://www.zivilschutz.at/wp-content/uploads/2022/06/Infoblatt-Notrufnummern.pdf
+04_SURVIVAL	https://zivilschutz-ooe.at/wp-content/uploads/2024/10/Checkliste_Notrufnummern.pdf
 04_SURVIVAL	https://www.zivilschutz.at/wp-content/uploads/2022/09/Vorrat_Checkliste_Web-small-rgb.pdf
-04_SURVIVAL	https://www.bundesheer.at/pdf_pool/publikationen/risikolandschaft_oesterreich_2022.pdf
-04_SURVIVAL	https://www.bundesheer.at/archiv/a2022/pdf/blackout_kochbuch.pdf
+# geprueft 2026-08-19: bundesheer.at 404 seit spaetestens 08/2026; KULV-Spiegel geprueft
+# alt: https://www.bundesheer.at/pdf_pool/publikationen/risikolandschaft_oesterreich_2022.pdf
+04_SURVIVAL	https://www.kulv.at/Publikationen/risikolandschaft_oesterreich_2022.pdf
+# geprueft 2026-08-19: Blackout-Kochbuch 404; ersetzt durch Zivilschutz-Blackout-Ratgeber
+# alt: https://www.bundesheer.at/archiv/a2022/pdf/blackout_kochbuch.pdf
+04_SURVIVAL	https://www.zivilschutz.at/wp-content/uploads/2022/09/Blackout-Ratgeber_Web.pdf
 08_VORRAT	https://www.zivilschutz.at/wp-content/uploads/2022/09/Vorrat_Checkliste_Web-small-rgb.pdf
 
 # === FEMA / Ready.gov / CERT ===
 04_SURVIVAL	https://www.ready.gov/sites/default/files/2021-11/are-you-ready-guide.pdf
 04_SURVIVAL	https://www.ready.gov/sites/default/files/2025-02/fema_full-suite-hazard-info-sheets.pdf
-04_SURVIVAL	https://www.ready.gov/sites/default/files/2020-03/ready_evacuating.pdf
-04_SURVIVAL	https://www.ready.gov/sites/default/files/2020-03/ready_shelter.pdf
-04_SURVIVAL	https://www.ready.gov/sites/default/files/2020-03/ready_communications.pdf
+# geprueft 2026-08-19: ready_*.pdf 404; FEMA-Hazard-Info-Sheets decken Evakuierung/Schutz/Kommunikation ab
+# alt: https://www.ready.gov/sites/default/files/2020-03/ready_evacuating.pdf
+04_SURVIVAL	https://www.ready.gov/sites/default/files/2025-02/fema_full-suite-hazard-info-sheets.pdf
+# geprueft 2026-08-19: ready_shelter.pdf 404; Ersatz aus derselben Reihe
+# alt: https://www.ready.gov/sites/default/files/2020-03/ready_shelter.pdf
+04_SURVIVAL	https://www.ready.gov/sites/default/files/2023-09/ready-gov_disaster-preparedness-guide-for-older-adults.pdf
+# geprueft 2026-08-19: ready_communications.pdf 404; AT-Warn-/Alarmsignale sind hier ohnehin passender
+# alt: https://www.ready.gov/sites/default/files/2020-03/ready_communications.pdf
+04_SURVIVAL	https://www.zivilschutz-ooe.at/wp-content/uploads/2018/06/WarnAlarmsignale_Notrufnummern.pdf
 04_SURVIVAL	https://www.ready.gov/sites/default/files/2019.CERT_.Basic_.PM_FINAL_508c.pdf
 04_SURVIVAL	https://www.ready.gov/sites/default/files/documents/files/RRToolkit.pdf
-08_VORRAT	https://www.fema.gov/pdf/library/f&web.pdf
+# TOT 2026-08-19: fema.gov liefert 403 auf Direktabrufe
+# 08_VORRAT	https://www.fema.gov/pdf/library/f&web.pdf
 
 # === FEMA ICS Formulare ===
 07_FUNK	https://training.fema.gov/emiweb/is/icsresource/assets/ics%20forms/ics%20form%20201,%20incident%20briefing%20(v3).pdf
 07_FUNK	https://training.fema.gov/emiweb/is/icsresource/assets/ics%20forms/nims%20ics%20forms%20booklet%20(v3).pdf
 
 # === CDC Wasser / Gesundheit ===
-04_SURVIVAL	https://www.cdc.gov/healthywater/pdf/drinking/HomeWaterTreatment.pdf
-04_SURVIVAL	https://www.cdc.gov/healthywater/pdf/emergency/foodandwater.pdf
-05_ENERGIE	https://www.cdc.gov/healthywater/pdf/drinking/HomeWaterTreatment.pdf
-08_VORRAT	https://www.cdc.gov/healthywater/pdf/emergency/foodandwater.pdf
+# TOT 2026-08-19: CDC 404 und blockt Direktabruf (403) - kein Ersatz gefunden
+# 04_SURVIVAL	https://www.cdc.gov/healthywater/pdf/drinking/HomeWaterTreatment.pdf
+# TOT 2026-08-19: CDC 404/403 - teilweise ersetzt durch ready_checklist.pdf (siehe unten)
+# 04_SURVIVAL	https://www.cdc.gov/healthywater/pdf/emergency/foodandwater.pdf
+# TOT 2026-08-19: CDC 404 und blockt Direktabruf (403) - kein Ersatz gefunden
+# 05_ENERGIE	https://www.cdc.gov/healthywater/pdf/drinking/HomeWaterTreatment.pdf
+# TOT 2026-08-19: CDC 404/403 - teilweise ersetzt durch ready_checklist.pdf (siehe unten)
+# 08_VORRAT	https://www.cdc.gov/healthywater/pdf/emergency/foodandwater.pdf
 
 # === BLE/BZL Garten DE ===
-02_GARTEN	https://www.ble.de/SharedDocs/Downloads/DE/Pressemitteilungen/2023/230309_Eigener_Garten.pdf
-02_GARTEN	https://www.ble.de/SharedDocs/Downloads/DE/Pressemitteilungen/2024/240529_Schatten.pdf
-02_GARTEN	https://www.ble.de/SharedDocs/Downloads/DE/Pressemitteilungen/2022/221104_Kompost-Garten.pdf
+# TOT 2026-08-19: BLE antwortet 200 mit HTML-Fehlerseite - Dokument nicht mehr auffindbar
+# 02_GARTEN	https://www.ble.de/SharedDocs/Downloads/DE/Pressemitteilungen/2023/230309_Eigener_Garten.pdf
+# TOT 2026-08-19: BLE antwortet 200 mit HTML-Fehlerseite - Dokument nicht mehr auffindbar
+# 02_GARTEN	https://www.ble.de/SharedDocs/Downloads/DE/Pressemitteilungen/2024/240529_Schatten.pdf
+# TOT 2026-08-19: BLE 404
+# 02_GARTEN	https://www.ble.de/SharedDocs/Downloads/DE/Pressemitteilungen/2022/221104_Kompost-Garten.pdf
 
 # === UBA Kompost ===
-02_GARTEN	https://www.umweltbundesamt.de/sites/default/files/medien/461/publikationen/4324.pdf
+# geprueft 2026-08-19: 4324.pdf 404; UBA-Kompostfibel geprueft
+# alt: https://www.umweltbundesamt.de/sites/default/files/medien/461/publikationen/4324.pdf
+02_GARTEN	https://www.umweltbundesamt.de/system/files/medien/376/publikationen/151207_stg_uba_kompostfibel_web.pdf
 
 # === FAO ===
 02_GARTEN	https://www.fao.org/fileadmin/templates/FCIT/PDF/briefing_guide.pdf
 02_GARTEN	https://www.fao.org/4/i3284e/i3284e.pdf
 
 # === NREL / IEA Energie ===
-05_ENERGIE	https://www.nrel.gov/docs/fy19osti/72564.pdf
-05_ENERGIE	https://www.nrel.gov/docs/fy15osti/64002.pdf
+# TOT 2026-08-19: nrel.gov nicht erreichbar (Verbindungsfehler von zwei Netzen)
+# 05_ENERGIE	https://www.nrel.gov/docs/fy19osti/72564.pdf
+# TOT 2026-08-19: nrel.gov nicht erreichbar (Verbindungsfehler von zwei Netzen)
+# 05_ENERGIE	https://www.nrel.gov/docs/fy15osti/64002.pdf
 
 # === HUD Gebäude-Wartung ===
 03_REPARATUR	https://www.hud.gov/sites/documents/hudgb1.pdf
@@ -65,14 +91,17 @@
 03_REPARATUR	https://www.hud.gov/sites/documents/hudgb6guid.pdf
 
 # === EPA Renovierung/Sicherheit ===
-03_REPARATUR	https://www.epa.gov/sites/default/files/2020-03/documents/small_entity_guide_9-23-11_w_new_cover.pdf
-03_REPARATUR	https://www.epa.gov/sites/default/files/2014-05/documents/initial_renovator-student_oct2011_0.pdf
+# TOT 2026-08-19: EPA 403, Pfad aufgeloest
+# 03_REPARATUR	https://www.epa.gov/sites/default/files/2020-03/documents/small_entity_guide_9-23-11_w_new_cover.pdf
+# TOT 2026-08-19: EPA 403, Pfad aufgeloest
+# 03_REPARATUR	https://www.epa.gov/sites/default/files/2014-05/documents/initial_renovator-student_oct2011_0.pdf
 
 # === USDA Wood Handbook ===
 03_REPARATUR	https://research.fs.usda.gov/treesearch/download/37440.pdf
 
 # === Fuel/Energy ===
-08_VORRAT	https://www.energy.gov/sites/default/files/2019/01/f58/fuel-storage-guide.pdf
+# TOT 2026-08-19: DOE 404
+# 08_VORRAT	https://www.energy.gov/sites/default/files/2019/01/f58/fuel-storage-guide.pdf
 
 # --- Kein direktes PDF / manuell oder SingleFile ---
 # MSD Manual DE: https://www.msdmanuals.com/de/heim (Website, kein Gesamt-PDF)
@@ -81,3 +110,8 @@
 # ATAK/CivTAK: https://tak.gov/ bzw. CivTAK-Docs (manuell)
 # Baofeng UV-5R: Miklor, sn0wlink, radiodoc/uv-5r – siehe CATEGORIES-TODO.md
 # DARC Notfunk: https://www.darc.de/der-club/referate/notfunk/dokumente/ (Seite, PDFs manuell laden)
+
+
+# Ersatz fuer die toten CDC-Wasser-/Lebensmittel-Eintraege (geprueft 2026-08-19)
+04_SURVIVAL	https://www.ready.gov/sites/default/files/2021-02/ready_checklist.pdf
+08_VORRAT	https://www.ready.gov/sites/default/files/2021-02/ready_checklist.pdf
