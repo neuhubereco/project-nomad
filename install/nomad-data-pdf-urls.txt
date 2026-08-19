@@ -1,5 +1,5 @@
 # NOMAD-DATA PDF/Resource Download Manifest
-# Format: SUBDIR	URL
+# Format: SUBDIR	URL[	DATEINAME]   (dritte Spalte optional, erzwingt den Dateinamen)
 # SUBDIR = folder under NOMAD_DATA (e.g. 04_SURVIVAL, 07_FUNK, 10_EIGENE_PDFS_RAG)
 # Run: install/download-nomad-data-pdfs.sh
 # ---
@@ -13,8 +13,8 @@
 04_SURVIVAL	https://hlh.who.int/docs/librariesprovider4/hlh-documents/who-icrc-basic-emergency-care.pdf
 # geprueft 2026-08-19: WHO EML 24. Liste (2025) direkt aus IRIS; die alte item-URL liefert HTML
 # alt: https://www.who.int/publications/i/item/WHO-MHP-HPS-EML-2023.02
-01_MEDIZIN	https://iris.who.int/server/api/core/bitstreams/17642505-ecd3-4940-a691-4f1dfa0d835a/content
-01_MEDIZIN	https://publikationen.dguv.de/widgets/pdf/download/article/826
+01_MEDIZIN	https://iris.who.int/server/api/core/bitstreams/17642505-ecd3-4940-a691-4f1dfa0d835a/content	who-essential-medicines-2025.pdf
+01_MEDIZIN	https://publikationen.dguv.de/widgets/pdf/download/article/826	dguv-erste-hilfe-826.pdf
 
 # === BBK (DE) Notfallvorsorge ===
 04_SURVIVAL	https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/Buergerinformationen/Ratgeber/ratgeber-notfallvosorge-checkliste.pdf?__blob=publicationFile&v=10
