@@ -97,11 +97,11 @@
             },
             {
               "id": "librepathology_en_all_maxi",
-              "version": "2025-09",
+              "version": "2026-09",
               "title": "LibrePathology",
               "description": "Pathology reference for disease identification",
-              "url": "https://download.kiwix.org/zim/other/librepathology_en_all_maxi_2025-09.zim",
-              "size_mb": 76
+              "url": "https://download.kiwix.org/zim/other/librepathology_en_all_maxi_2026-09.zim",
+              "size_mb": 95
             }
           ]
         }
@@ -145,20 +145,20 @@
               "size_mb": 27
             },
             {
-              "id": "canadian_prepper_winterprepping_en",
-              "version": "2026-02",
+              "id": "canadian-prepper_en_winterprepping",
+              "version": "2026-08",
               "title": "Canadian Prepper: Winter Prepping",
               "description": "Video guides for winter survival and cold weather emergencies",
-              "url": "https://download.kiwix.org/zim/videos/canadian_prepper_winterprepping_en_2026-02.zim",
-              "size_mb": 1340
+              "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_winterprepping_2026-08.zim",
+              "size_mb": 1342
             },
             {
-              "id": "canadian_prepper_bugoutroll_en",
-              "version": "2025-08",
+              "id": "canadian-prepper_en_bugoutroll",
+              "version": "2026-07",
               "title": "Canadian Prepper: Bug Out Roll",
               "description": "Essential gear selection for your bug-out bag",
-              "url": "https://download.kiwix.org/zim/videos/canadian_prepper_bugoutroll_en_2025-08.zim",
-              "size_mb": 975
+              "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_bugoutroll_2026-07.zim",
+              "size_mb": 879
             }
           ]
         },
@@ -193,28 +193,28 @@
               "size_mb": 75
             },
             {
-              "id": "canadian_prepper_bugoutconcepts_en",
-              "version": "2026-02",
+              "id": "canadian-prepper_en_bugoutconcepts",
+              "version": "2026-08",
               "title": "Canadian Prepper: Bug Out Concepts",
               "description": "Strategies and planning for emergency evacuation",
-              "url": "https://download.kiwix.org/zim/videos/canadian_prepper_bugoutconcepts_en_2026-02.zim",
-              "size_mb": 2890
+              "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_bugoutconcepts_2026-08.zim",
+              "size_mb": 2886
             },
             {
               "id": "urban-prepper_en_all",
-              "version": "2026-02",
+              "version": "2026-08",
               "title": "Urban Prepper",
               "description": "Comprehensive urban emergency preparedness video series",
-              "url": "https://download.kiwix.org/zim/videos/urban-prepper_en_all_2026-02.zim",
-              "size_mb": 2240
+              "url": "https://download.kiwix.org/zim/videos/urban-prepper_en_all_2026-08.zim",
+              "size_mb": 2245
             },
             {
               "id": "survivorlibrary.com_en_all",
-              "version": "2026-03",
+              "version": "2026-09",
               "title": "Survivor Library",
               "description": "Umfassende Offline-Bibliothek für Selbstversorgung, alte Handwerke, Pre-Industrial-Techniken",
-              "url": "https://download.kiwix.org/zim/zimit/survivorlibrary.com_en_all_2026-03.zim",
-              "size_mb": 2700
+              "url": "https://download.kiwix.org/zim/zimit/survivorlibrary.com_en_all_2026-09.zim",
+              "size_mb": 210140
             }
           ]
         },
@@ -242,11 +242,11 @@
             },
             {
               "id": "100r.co_en_all",
-              "version": "2026-06",
+              "version": "2026-08",
               "title": "Hundred Rabbits",
               "description": "Field notes on low-tech living - solar power, water, food, and repair from a decade off-grid",
-              "url": "https://download.kiwix.org/zim/zimit/100r.co_en_all_2026-06.zim",
-              "size_mb": 172
+              "url": "https://download.kiwix.org/zim/zimit/100r.co_en_all_2026-08.zim",
+              "size_mb": 169
             },
             {
               "id": "gutenberg_en_lcc-u",
@@ -299,11 +299,11 @@
           "resources": [
             {
               "id": "ted_mul_ted-ed",
-              "version": "2026-01",
+              "version": "2026-09",
               "title": "TED-Ed",
               "description": "Educational video lessons on science, history, literature, and more",
-              "url": "https://download.kiwix.org/zim/ted/ted_mul_ted-ed_2026-01.zim",
-              "size_mb": 5610
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_ted-ed_2026-09.zim",
+              "size_mb": 6381
             },
             {
               "id": "wikiversity_en_all_maxi",
@@ -363,11 +363,11 @@
             },
             {
               "id": "ted_mul_ted-conference",
-              "version": "2026-02",
+              "version": "2026-09",
               "title": "TED Conference",
               "description": "Main TED conference talks on ideas worth spreading",
-              "url": "https://download.kiwix.org/zim/ted/ted_mul_ted-conference_2026-02.zim",
-              "size_mb": 16500
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_ted-conference_2026-09.zim",
+              "size_mb": 18136
             },
             {
               "id": "libretexts.org_en_human",
@@ -493,10 +493,10 @@
             },
             {
               "id": "based.cooking_en_all",
-              "version": "2026-02",
+              "version": "2026-08",
               "title": "Based.Cooking",
               "description": "Simple, practical recipes from the community",
-              "url": "https://download.kiwix.org/zim/zimit/based.cooking_en_all_2026-02.zim",
+              "url": "https://download.kiwix.org/zim/zimit/based.cooking_en_all_2026-08.zim",
               "size_mb": 16
             }
           ]
@@ -574,18 +574,18 @@
           "resources": [
             {
               "id": "freecodecamp_en_all",
-              "version": "2026-02",
+              "version": "2026-08",
               "title": "freeCodeCamp",
               "description": "Interactive programming tutorials - JavaScript, algorithms, and data structures",
-              "url": "https://download.kiwix.org/zim/freecodecamp/freecodecamp_en_all_2026-02.zim",
+              "url": "https://download.kiwix.org/zim/freecodecamp/freecodecamp_en_all_2026-08.zim",
               "size_mb": 8
             },
             {
               "id": "devdocs_en_python",
-              "version": "2026-02",
+              "version": "2026-08",
               "title": "Python Documentation",
               "description": "Complete Python language reference and tutorials",
-              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_python_2026-02.zim",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_python_2026-08.zim",
               "size_mb": 4
             },
             {
@@ -638,10 +638,10 @@
             },
             {
               "id": "devdocs_en_node",
-              "version": "2026-02",
+              "version": "2026-08",
               "title": "Node.js Documentation",
               "description": "Node.js API reference and guides",
-              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_node_2026-02.zim",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_node_2026-08.zim",
               "size_mb": 1
             },
             {
@@ -719,19 +719,19 @@
           "resources": [
             {
               "id": "wikipedia_de_top_mini",
-              "version": "2026-01",
+              "version": "2026-07",
               "title": "Wikipedia DE Top",
               "description": "Die wichtigsten deutschsprachigen Wikipedia-Artikel",
-              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_de_top_mini_2026-01.zim",
-              "size_mb": 122
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_de_top_mini_2026-07.zim",
+              "size_mb": 131
             },
             {
               "id": "wiktionary_de_all_nopic",
-              "version": "2026-01",
+              "version": "2026-07",
               "title": "Wiktionary DE",
               "description": "Deutsches Wörterbuch offline",
-              "url": "https://download.kiwix.org/zim/wiktionary/wiktionary_de_all_nopic_2026-01.zim",
-              "size_mb": 1200
+              "url": "https://download.kiwix.org/zim/wiktionary/wiktionary_de_all_nopic_2026-07.zim",
+              "size_mb": 1244
             }
           ]
         },
@@ -743,11 +743,11 @@
           "resources": [
             {
               "id": "wikipedia_de_medicine_maxi",
-              "version": "2026-01",
+              "version": "2026-07",
               "title": "Wikipedia Medizin DE",
               "description": "Medizin-Artikel der deutschen Wikipedia mit Bildern",
-              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_de_medicine_maxi_2026-01.zim",
-              "size_mb": 433
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_de_medicine_maxi_2026-07.zim",
+              "size_mb": 466
             },
             {
               "id": "wikibooks_de_all_nopic",
@@ -759,18 +759,18 @@
             },
             {
               "id": "klexikon_de_all_maxi",
-              "version": "2026-02",
+              "version": "2026-08",
               "title": "Klexikon DE",
               "description": "Kinder-Enzyklopädie für einfache Erklärungen",
-              "url": "https://download.kiwix.org/zim/other/klexikon_de_all_maxi_2026-02.zim",
-              "size_mb": 138
+              "url": "https://download.kiwix.org/zim/other/klexikon_de_all_maxi_2026-08.zim",
+              "size_mb": 129
             },
             {
               "id": "kochwiki.org_de_all_maxi",
-              "version": "2026-01",
+              "version": "2026-07",
               "title": "Koch-Wiki DE",
               "description": "Kochrezepte und Küchenwissen offline",
-              "url": "https://download.kiwix.org/zim/other/kochwiki.org_de_all_maxi_2026-01.zim",
+              "url": "https://download.kiwix.org/zim/other/kochwiki.org_de_all_maxi_2026-07.zim",
               "size_mb": 66
             }
           ]
@@ -791,11 +791,11 @@
             },
             {
               "id": "wikivoyage_de_all_maxi",
-              "version": "2026-01",
+              "version": "2026-07",
               "title": "Wikivoyage DE",
               "description": "Reise- und Geländeinfos für Österreich, Deutschland, Schweiz",
-              "url": "https://download.kiwix.org/zim/wikivoyage/wikivoyage_de_all_maxi_2026-01.zim",
-              "size_mb": 1200
+              "url": "https://download.kiwix.org/zim/wikivoyage/wikivoyage_de_all_maxi_2026-07.zim",
+              "size_mb": 1266
             },
             {
               "id": "ifixit_de_all",
@@ -938,11 +938,11 @@
           "resources": [
             {
               "id": "100r.co_en_all",
-              "version": "2026-02",
+              "version": "2026-08",
               "title": "100 Rabbits",
               "description": "Off-Grid-Leben, Energie, Werkzeuge, Selbstversorgung",
-              "url": "https://download.kiwix.org/zim/zimit/100r.co_en_all_2026-02.zim",
-              "size_mb": 160
+              "url": "https://download.kiwix.org/zim/zimit/100r.co_en_all_2026-08.zim",
+              "size_mb": 169
             }
           ]
         }
